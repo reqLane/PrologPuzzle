@@ -83,493 +83,252 @@ solve_idastar(Current, Final, Moves) :-
     between(H, 161, Limit),
     solve_astar(Current, Final, Limit, Moves).
 
-%Right moves
-move([0, X|Xs], [X, 0|Xs], r).
-move([A, 0, X|Xs], [A, X, 0|Xs], r).
-move([A, B, 0, X|Xs], [A, B, X, 0|Xs], r).
-move([A, B, C, 0, X|Xs], [A, B, C, X, 0|Xs], r).
-move([A, B, C, D, E, 0, X|Xs], [A, B, C, D, E, X, 0|Xs], r).
-move([A, B, C, D, E, F, 0, X|Xs], [A, B, C, D, E, F, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, 0, X|Xs], [A, B, C, D, E, F, G, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, 0, X|Xs], [A, B, C, D, E, F, G, H, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, I, J, 0, X|Xs], [A, B, C, D, E, F, G, H, I, J, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, I, J, K, 0, X|Xs], [A, B, C, D, E, F, G, H, I, J, K, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, I, J, K, L, 0, X|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, 0, X|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, 0, X|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, 0, X|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, 0, X|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, 0, X|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, 0, X|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, 0, X|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, 0, X|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, X, 0|Xs], r).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, 0, X|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, 0|Xs], r).
-
-%Left moves
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, X, 0|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, W, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, X, 0|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, V, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, X, 0|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, U, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, X, 0|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, S, T, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, X, 0|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, R, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, X, 0|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, Q, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, X, 0|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, P, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, X, 0|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, N, O, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, H, I, J, K, L, M, X, 0|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, M, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, H, I, J, K, L, X, 0|Xs], [A, B, C, D, E, F, G, H, I, J, K, L, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, H, I, J, K, X, 0|Xs], [A, B, C, D, E, F, G, H, I, J, K, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, H, I, J, X, 0|Xs], [A, B, C, D, E, F, G, H, I, J, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, H, X, 0|Xs], [A, B, C, D, E, F, G, H, 0, X|Xs], l).
-move([A, B, C, D, E, F, G, X, 0|Xs], [A, B, C, D, E, F, G, 0, X|Xs], l).
-move([A, B, C, D, E, F, X, 0|Xs], [A, B, C, D, E, F, 0, X|Xs], l).
-move([A, B, C, D, E, X, 0|Xs], [A, B, C, D, E, 0, X|Xs], l).
-move([A, B, C, X, 0|Xs], [A, B, C, 0, X|Xs], l).
-move([A, B, X, 0|Xs], [A, B, 0, X|Xs], l).
-move([A, X, 0|Xs], [A, 0, X|Xs], l).
-move([X, 0|Xs], [0, X|Xs], l).
-
-%Down moves
-move([0, B, C, D, E, 
-      X, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [X, B, C, D, E,
-      0, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, 0, C, D, E, 
-      F, X, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, X, C, D, E,
-      F, 0, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, 0, D, E, 
-      F, G, X, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, X, D, E,
-      F, G, 0, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, 0, E, 
-      F, G, H, X, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, X, E,
-      F, G, H, 0, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, D, 0, 
-      F, G, H, I, X,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, X,
-      F, G, H, I, 0,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      0, G, H, I, J,
-      X, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      X, G, H, I, J,
-      0, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, 0, H, I, J,
-      K, X, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, X, H, I, J,
-      K, 0, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, 0, I, J,
-      K, L, X, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, X, I, J,
-      K, L, 0, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, H, 0, J,
-      K, L, M, X, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, X, J,
-      K, L, M, 0, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, H, I, 0,
-      K, L, M, N, X,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, X,
-      K, L, M, N, 0,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      0, L, M, N, O,
-      X, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      X, L, M, N, O,
-      0, Q, R, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, 0, M, N, O,
-      P, X, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, X, M, N, O,
-      P, 0, R, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, 0, N, O,
-      P, Q, X, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, X, N, O,
-      P, Q, 0, S, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, 0, O,
-      P, Q, R, X, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, X, O,
-      P, Q, R, 0, T,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, N, 0,
-      P, Q, R, S, X,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, N, X,
-      P, Q, R, S, 0,
-      U, V, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, N, O,
-      0, Q, R, S, T,
-      X, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, N, O,
-      X, Q, R, S, T,
-      0, V, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, 0, R, S, T,
-      U, X, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, X, R, S, T,
-      U, 0, W, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, 0, S, T,
-      U, V, X, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, X, S, T,
-      U, V, 0, Y, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, 0, T,
-      U, V, W, X, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, X, T,
-      U, V, W, 0, Z], d).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, 0,
-      U, V, W, Y, X], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, X,
-      U, V, W, Y, 0], d).
-
-%Up moves
-move([X, B, C, D, E, 
-      0, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [0, B, C, D, E,
-      X, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, X, C, D, E, 
-      F, 0, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, 0, C, D, E,
-      F, X, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, X, D, E, 
-      F, G, 0, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, 0, D, E,
-      F, G, X, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, X, E, 
-      F, G, H, 0, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, 0, E,
-      F, G, H, X, J,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, D, X, 
-      F, G, H, I, 0,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, 0,
-      F, G, H, I, X,
-      K, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      X, G, H, I, J,
-      0, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      0, G, H, I, J,
-      X, L, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, X, H, I, J,
-      K, 0, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, 0, H, I, J,
-      K, X, M, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, X, I, J,
-      K, L, 0, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, 0, I, J,
-      K, L, X, N, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, H, X, J,
-      K, L, M, 0, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, 0, J,
-      K, L, M, X, O,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, H, I, X,
-      K, L, M, N, 0,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, 0,
-      K, L, M, N, X,
-      P, Q, R, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      X, L, M, N, O,
-      0, Q, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      0, L, M, N, O,
-      X, Q, R, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, X, M, N, O,
-      P, 0, R, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, 0, M, N, O,
-      P, X, R, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, X, N, O,
-      P, Q, 0, S, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, 0, N, O,
-      P, Q, X, S, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, X, O,
-      P, Q, R, 0, T,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, 0, O,
-      P, Q, R, X, T,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, N, X,
-      P, Q, R, S, 0,
-      U, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, N, 0,
-      P, Q, R, S, X,
-      U, V, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, N, O,
-      X, Q, R, S, T,
-      0, V, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, N, O,
-      0, Q, R, S, T,
-      X, V, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, X, R, S, T,
-      U, 0, W, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, 0, R, S, T,
-      U, X, W, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, X, S, T,
-      U, V, 0, Y, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, 0, S, T,
-      U, V, X, Y, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, X, T,
-      U, V, W, 0, Z], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, 0, T,
-      U, V, W, X, Z], u).
-
-move([A, B, C, D, E, 
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, X,
-      U, V, W, Y, 0], 
-     [A, B, C, D, E,
-      F, G, H, I, J,
-      K, L, M, N, O,
-      P, Q, R, S, 0,
-      U, V, W, Y, X], u).
+% Ходи вправо (Right)
+move(Board, NewBoard, "Right") :-
+      nth0(Index0, Board, 0),
+      (Index0 + 1) mod 5 =\= 0,
+      IndexX is Index0 + 1,
+      nth0(IndexX, Board, X),
+      select(0, Board, -1, Board1),
+      select(X, Board1, 0, Board2),
+      select(-1, Board2, X, Board3),
+      NewBoard = Board3.
+% Ходи вліво (Left)
+move(Board, NewBoard, "Left") :-
+      nth0(Index0, Board, 0),
+      Index0 mod 5 =\= 0,
+      IndexX is Index0 - 1,
+      nth0(IndexX, Board, X),
+      select(0, Board, -1, Board1),
+      select(X, Board1, 0, Board2),
+      select(-1, Board2, X, Board3),
+      NewBoard = Board3.
+% Ходи вниз (Down)
+move(Board, NewBoard, "Down") :-
+      nth0(Index0, Board, 0),
+      Index0 < 20,
+      IndexX is Index0 + 5,
+      nth0(IndexX, Board, X),
+      select(0, Board, -1, Board1),
+      select(X, Board1, 0, Board2),
+      select(-1, Board2, X, Board3),
+      NewBoard = Board3.
+% Ходи вверх (Up)        
+move(Board, NewBoard, "Up") :-
+      nth0(Index0, Board, 0),
+      Index0 >= 5,
+      IndexX is Index0 - 5,
+      nth0(IndexX, Board, X),
+      select(0, Board, -1, Board1),
+      select(X, Board1, 0, Board2),
+      select(-1, Board2, X, Board3),
+      NewBoard = Board3.
 
 solve(Board, Moves) :-
     solvable(Board),
     solve_idastar(Board, [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,0], Moves),
     !.
+
+
+% Графічний інтерфейс
+:- use_module(library(pce)).
+
+% Дошка
+:- dynamic(board/1).
+set_board(Board) :-
+    retractall(board(_)),
+    assertz(board(Board)).
+get_board(Board) :-
+    board(Board).
+
+% Рішення
+:- dynamic(solution/1).
+set_solution(Solution) :-
+    retractall(solution(_)),
+    assertz(solution(Solution)).
+get_solution(Solution) :-
+    solution(Solution).
+
+% Предикат для перемішування дошки та відображення її
+shuffle_board(Window) :-
+    random_permutation([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23,24,0], Shuffled),
+    set_board(Shuffled),
+    display_board(Window).
+    
+% Предикат для відображення дошки
+display_board() :-
+    new(Window, picture("24 Puzzle")),
+    send(Window, size, size(800, 450)),
+    send(Window, open, point(560, 315)),
+    display_board(Window).
+display_board(Window) :-
+    get_board(Board),
+    display_numbers(Window),
+    send(Window, display, new(_, box(800, 450))),
+    draw_borders(Window),
+    create_shuffle_button(Window),
+    create_solve_button(Window),
+    create_exit_button(Window).
+
+% Предикат для малювання рамок
+draw_borders(Window) :-
+    % Рамка поля
+    X1 is 32, Y1 is 34,
+    X2 is 280, Y2 is 282,
+    send(Window, display, new(_, line(X1, Y1, X2, Y1))), % Верхня лінія
+    send(Window, display, new(_, line(X1, Y2, X2, Y2))), % Нижня лінія
+    send(Window, display, new(_, line(X1, Y1, X1, Y2))), % Ліва лінія
+    send(Window, display, new(_, line(X2, Y1, X2, Y2))), % Права лінія
+    % Лінії всередині поля
+    send(Window, display, new(_, line(81, Y1, 81, Y2))),
+    send(Window, display, new(_, line(131, Y1, 131, Y2))),
+    send(Window, display, new(_, line(181, Y1, 181, Y2))),
+    send(Window, display, new(_, line(230, Y1, 230, Y2))),
+    send(Window, display, new(_, line(X1, 83, X2, 83))),
+    send(Window, display, new(_, line(X1, 133, X2, 133))),
+    send(Window, display, new(_, line(X1, 183, X2, 183))),
+    send(Window, display, new(_, line(X1, 232, X2, 232))),
+    % Рамка для рішення
+    X11 is 15, Y11 = 390,
+    X12 is 770, Y12 = 425,
+    send(Window, display, new(_, text("Solution:")), point(15, 370)),
+    send(Window, display, new(_, line(X11, Y11, X12, Y11))), % Верхня лінія
+    send(Window, display, new(_, line(X11, Y12, X12, Y12))), % Нижня лінія
+    send(Window, display, new(_, line(X11, Y11, X11, Y12))), % Ліва лінія
+    send(Window, display, new(_, line(X12, Y11, X12, Y12))). % Права лінія
+
+index_to_position(Index, X0, Y0) :-
+    X = 50,
+    Y = 50,
+    Size = 50,
+    RowCount = 5,
+    Row is Index // RowCount,
+    Col is Index mod RowCount,
+    X0 is X + Col * Size,
+    Y0 is Y + Row * Size.
+
+% Предикат для відображення чисел на дошці
+display_numbers(Window) :-
+    get_board(Board),
+    forall(between(0, 24, Index),
+            (nth0(Index, Board, Number),
+             (Number == 0 -> Text = ''; atom_number(Text, Number)),
+             index_to_position(Index, X0, Y0),
+             send(Window, display, new(_, text(Text)), point(X0, Y0)))).
+
+% Предикат для створення кнопки перемішування
+create_shuffle_button(Window) :-
+    send(Window, display, 
+         new(Button, button("Shuffle")), 
+         point(65, 300)),
+    send(Button, message, message(@prolog, handle_shuffle_click, Window)).
+
+% Обробник події натискання кнопки
+handle_shuffle_click(Window) :-
+    send(Window, clear),
+    shuffle_board(Window).
+
+% Предикат для створення кнопки вирішення
+create_solve_button(Window) :-
+    send(Window, display, 
+         new(Button, button("Solve")), 
+         point(165, 300)),
+    send(Button, message, message(@prolog, handle_solve_click, Window)).
+
+% Предикат для обробки натискання кнопки вирішення
+handle_solve_click(Window) :-
+    get_board(Board),
+    (solvable(Board) ->
+        solve(Board, Solution),
+        set_solution(Solution),
+        list_to_string(Solution, SolutionString),
+        send(Window, display, new(_, text(SolutionString)), point(20, 400)),
+        create_next_step_button(Window)
+    ;
+        send(Window, display, new(_, text("No solutions.")), point(20, 400))
+    ).
+
+% Предикат для створення кнопки виходу в меню
+create_exit_button(Window) :-
+    send(Window, display, 
+         new(Button, button("Exit to Menu")), 
+         point(700, 20)),
+    send(Button, message, message(@prolog, handle_exit_click, Window)).
+
+% Предикат для виходу в меню
+handle_exit_click(Window) :-
+    send(Window, destroy),
+    consult('gui.pl').
+
+% Наступний крок
+create_next_step_button(Window) :-
+    send(Window, display, 
+         new(Button, button("Next Step")), 
+         point(265, 300)),
+    send(Button, message, message(@prolog, handle_next_step_click, Window)).
+
+% Обробник кнопки наступний крок
+handle_next_step_click(Window) :-
+    get_solution(Solution),
+    (   Solution = [] ->
+        send(Window, display, new(_, text("No more steps.")), point(365, 305))
+    ;   get_board(Board),
+        [NextStep|RemainingSteps] = Solution,
+        move_empty_tile(Board, NextStep, NewBoard),
+        set_board(NewBoard), % Оновлюємо глобальну змінну дошки
+        set_solution(RemainingSteps), % Оновлюємо глобальну змінну рішення, видаляючи перший крок
+        send(Window, clear),
+        display_board(Window), % Відображаємо оновлену дошку
+        create_next_step_button(Window),
+        list_to_string(RemainingSteps, SolutionString),
+        send(Window, display, new(_, text(SolutionString)), point(20, 400))
+    ).
+
+% Предикат для виконання кроку
+move_empty_tile(Board, Step, NewBoard) :-
+    nth0(IndexEmpty, Board, 0), % Знаходимо індекс порожньої плитки
+    (   Step == "Up"
+    ->  IndexSwap is IndexEmpty - 5 % Пересуваємо порожню плитку вгору
+    ;   Step == "Down"
+    ->  IndexSwap is IndexEmpty + 5 % Пересуваємо порожню плитку вниз
+    ;   Step == "Left"
+    ->  IndexSwap is IndexEmpty - 1 % Пересуваємо порожню плитку вліво
+    ;   Step == "Right"
+    ->  IndexSwap is IndexEmpty + 1 % Пересуваємо порожню плитку вправо
+    ),
+    swap(Board, IndexEmpty, IndexSwap, NewBoard).
+
+% Предикат для обміну значень місцями
+swap(Board, Index1, Index2, NewBoard) :-
+    nth0(Index1, Board, Value1), % Отримуємо значення з першого індексу
+    nth0(Index2, Board, Value2), % Отримуємо значення з другого індексу
+    replace(Board, Index1, Value2, TempBoard), % Замінюємо значення в першому індексі на друге значення
+    replace(TempBoard, Index2, Value1, NewBoard). % Замінюємо значення в другому індексі на перше значення
+
+% Предикат для заміни елемента в списку за індексом
+replace([_|T], 0, X, [X|T]).
+replace([H|T], I, X, [H|R]) :-
+    I > 0,
+    I1 is I - 1,
+    replace(T, I1, X, R).
+
+% Предикат для перетворення списку в рядок
+list_to_string([], "").
+list_to_string([H|T], String) :-
+    atom_string(H, HStr),
+    list_to_string(T, RestStr),
+    string_concat(HStr, " ", SpacedString),
+    string_concat(SpacedString, RestStr, String).
+
+% Головний предикат, що починає гру
+start_game :-
+    % random_permutation([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,0], Board),
+    % set_board(Board),
+    % solvable
+    % set_board([1,2,3,4,5,7,8,16,9,10,6,12,13,14,15,11,18,0,17,20,21,23,22,19,24]),
+    % unsolvable
+    set_board([1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,24,23,0]),
+    display_board().
+
+% Запуск гри при завантаженні скрипта
+:- start_game.

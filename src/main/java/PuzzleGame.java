@@ -173,7 +173,7 @@ public class PuzzleGame extends JFrame {
             numbers[i] = temp;
         }
 
-        int tests = 5;
+        int tests = 0;
         switch(tests) {
             //unsolvable 3x3
             case 1 -> {
